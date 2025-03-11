@@ -1,0 +1,77 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: url('https://img.freepik.com/free-vector/stock-market-economic-graph-with-diagrams-business-financial-concepts-reports-abstract-technology-communication-concept-background_29865-1321.jpg?size=626&ext=jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: white;
+    height: 100vh;
+}
+.container {
+    text-align: center;
+    padding: 50px;
+    border-radius: 10px;
+    max-width: 80%;
+    margin: 0 auto;
+}
+h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+}
+p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+}
+.expense-list {
+    overflow-x: auto;
+    margin-bottom: 30px;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+th, td {
+    padding: 12px 15px;
+    text-align: center;
+}
+th {
+    background-color: #4CAF50;
+}
+td {
+    background-color: #f2f2f2;
+    color: black;
+}
+a {
+    color: #f44336;
+    text-decoration: none;
+}
+a:hover {
+    color: #e57373;
+}
+.delete-btn {
+    color: red;
+    text-decoration: none;
+}
+.delete-btn:hover {
+    color: #ff6347;
+}
+.add-expense,
+.graph-btn {
+    margin-top: 20px;
+}
+.btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 1.2em;
+    border-radius: 5px;
+    margin: 10px;
+    display: inline-block;
+}
+.btn:hover {
+    background-color: #45a049;
+}
