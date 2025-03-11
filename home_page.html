@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        /* Initially hide the expense list and table heading */
+        .expense-list, .expense-list th {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to Expense Tracker</h1>
+        <p>Track your expenses and manage your finances easily!</p>
+        <!-- Expense Entry Form -->
+        <div class="add-expense-form">
+            <form action="{{ url_for('add_expense') }}" method="POST">
+                <label for="category">Category</label>
+                <input type="text" id="category" name="category" required>
+                <label for="amount">Amount</label>
+                <input type="number" id="amount" name="amount" step="0.01" required>
+                <label for="description">Description</label>
+                <input type="text" id="description" name="description" required>
+                <label for="date">Date</label>
+                <input type="date" id="date" name="date" required>
+                <button type="submit" class="btn">Add Expense</button>
+            </form>
+        </div>
+        <!-- Add Expense Button (Triggers Table Visibility) -->
+        <div class="add-expense">
+            <button onclick="showTable()" class="btn">Show Expense</button>
+        </div>
+        <!-- Expense List (Visible after adding expenses) -->
+        <div class="expense-list">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Amount</th>
+                        <th>Description</th>
+                        <th>Date</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for expense in expenses %}
+                    <tr>
+                        <td>{{ expense.category }}</td>
+                        <td>${{ expense.amount }}</td>
+                        <td>{{ expense.description }}</td>
+                        <td>{{ expense.date }}</td>
+                        <td>
+                            <a href="{{ url_for('delete_expense', id=expense.id) }}" class="delete-btn">Delete</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <!-- Graph Analysis Button -->
+        <div class="graph-btn">
+            <a href="{{ url_for('graph') }}" class="btn">View Expense Graph</a>
+        </div>
+    </div>
+    <script>
+        // Function to show the expense table
+        function showTable() {
+            // Show the expense list and its heading when the button is clicked
+            document.querySelector('.expense-list').style.display = 'block';
+            // Show the table headers
+            document.querySelectorAll('.expense-list th').forEach(th => th.style.display = 'table-cell');
+        }
+               window.onload = function() {
+            if (expenses)
+                document.querySelector('.expense-list').style.display = 'block';
+                document.querySelectorAll('.expense-list th').forEach(th => th.style.display = 'table-cell');
+            endif
+        };
+    </script>
+</body>
+</html>
